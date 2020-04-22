@@ -18,22 +18,32 @@ class SLL:
             self.head =newNode
 
     def delete(self,data):
-        delnode = Node(data)
-        print (delnode.data)                #value we want to delete
+        delnode = Node(data)                #value we want to delete
         if (self.head):
             current = self.head
             while (current.data):
                  if current.data == delnode.data:
-                     print (current.data)
                      break
-                 prev = current             # we created a new object prev so that we could manipulate the 
-                 print (current.data)
+                 prev = current             # we created a new object prev so that we could manipulate the
                  current = current.next
         else:
             return (0)
-        print (prev.next.data)
         prev.next = current.next
         current = None
+
+    def search(self,data):
+        reqnode = Node(data)
+        if (self.head):
+            current = self.head
+            count =0
+            while (current.data):
+                count=count+1
+                if current.data == reqnode.data:
+                    break
+                print ("The node %d is at position %d of the list" %(reqnode.data, count))
+                break
+        else:
+            print ("%d is not in this node" %(reqnode))
 
     def printSLL(self):
         current = self.head
@@ -48,4 +58,5 @@ obj.insert(3)
 obj.insert(4)
 obj.insert(5)
 obj.delete(3)
+obj.search(2)
 obj.printSLL()
