@@ -19,8 +19,12 @@ class SLL:
 
     def delete(self,data):
         delnode = Node(data)                #value we want to delete
-        if (self.head):
-            current = self.head
+        current = self.head
+        if (delnode.data == self.head.data):
+            self.head = current.next
+            delnode = None
+            return
+        if (delnode.data):
             while (current.data):
                  if current.data == delnode.data:
                      break
@@ -30,6 +34,8 @@ class SLL:
             return (0)
         prev.next = current.next
         current = None
+
+
 
     def search(self,data):
         reqnode = Node(data)
@@ -45,6 +51,9 @@ class SLL:
         else:
             print ("%d is not in this node" %(reqnode))
 
+    def size(self):
+        pass
+
     def printSLL(self):
         current = self.head
         while (current):
@@ -57,6 +66,6 @@ obj.insert(2)
 obj.insert(3)
 obj.insert(4)
 obj.insert(5)
-obj.delete(3)
+obj.delete(5)
 obj.search(2)
 obj.printSLL()
